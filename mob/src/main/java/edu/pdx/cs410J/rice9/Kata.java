@@ -36,11 +36,17 @@ public class Kata {
     for (int i = 0; i < 4; i++) {
 	for (int j = 0; j < 4; j++) {
 	    if (board[i][j].equals("*")) {
-		if (i - 1 >= 0) {
-		    if (j + 1 < 4)
-		        board[i-1][j+1]
-			board[i][j+1]
-		}
+		if (i - 1 >= 0) { //Left side is clear
+		    if (j + 1 < 4) { //Top side is clear
+                board[i - 1][j + 1] = Integer.toString(Integer.parseInt(board[i - 1][j + 1]) + 1);
+                board[i][j + 1] = Integer.toString(Integer.parseInt(board[i][j + 1]) + 1);
+            }
+			if(j - 1 >= 0) { //Bottom side is clear
+                board[i-1][j-1] = Integer.toString(Integer.parseInt(board[i - 1][j-1]) + 1);
+                board[i][j-1] = Integer.toString(Integer.parseInt(board[i][j-1]) + 1);
+            }
+            board[i - 1][j] = Integer.toString(Integer.parseInt(board[i-1][j]) + 1);
+        }
 		    
 		if (i + 1 > 3)
 		if (j - 1 >= 0)
